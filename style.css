@@ -7,7 +7,8 @@
 }
 
 :root {
-  --boxColor: rgba(191, 219, 66, 0.562);
+  --boxColor: rgba(66, 219, 194, 0.562);
+  --colorBola: rgba(19, 155, 196, 0.651);
   --velocidadRotacion: 20s; /* Para dar 1 vuelta */
   --saltoBola: 0.6s; /* Para dar 1 salto */
 }
@@ -45,9 +46,9 @@ body {
   bottom: 1em;
   background-image: radial-gradient(
     circle at top,
-    rgba(19, 66, 196, 0.651),
+    var(--colorBola),
     50%,
-    rgba(51, 50, 50, 0.493)
+    rgba(59, 53, 53, 0.883)
   );
 
   animation: bolaSaltando var(--saltoBola) infinite ease-out,
