@@ -1,0 +1,168 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --boxColor: rgba(191, 219, 66, 0.562);
+  --velocidadRotacion: 20s; /* Para dar 1 vuelta */
+  --saltoBola: 0.6s; /* Para dar 1 salto */
+}
+
+body {
+  background-color: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 75px;
+  perspective: 8em;
+  perspective-origin: 50% calc(50% - 2em);
+  overflow: hidden;
+}
+
+.escena {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: giroEscena var(--velocidadRotacion) infinite linear;
+}
+
+@keyframes giroEscena {
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.bola {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: absolute;
+  left: -0.5em;
+  bottom: 1em;
+  background-image: radial-gradient(
+    circle at top,
+    rgba(19, 66, 196, 0.651),
+    50%,
+    rgba(51, 50, 50, 0.493)
+  );
+
+  animation: bolaSaltando var(--saltoBola) infinite ease-out,
+    giroEscena var(--velocidadRotacion) infinite linear reverse;
+  z-index: -1;
+}
+
+@keyframes bolaSaltando {
+  0%,
+  100% {
+    bottom: 0.7em;
+  }
+  50% {
+    bottom: 3em;
+    animation-timing-function: ease-in;
+  }
+}
+
+.sombra__bola {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#0007, #0000 50%);
+  animation: sombreBola var(--saltoBola) infinite ease-out;
+}
+
+@keyframes sombreBola {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(2);
+    animation-timing-function: ease-in;
+  }
+}
+
+.cubo {
+  width: 2em;
+  height: 2em;
+
+  position: absolute;
+  bottom: -1em;
+  left: -1em;
+  animation: alturaCubo var(--saltoBola) infinite linear;
+}
+
+@keyframes alturaCubo {
+  0%,
+  100% {
+    height: 1.8em;
+  }
+  10%,
+  96% {
+    height: 2em;
+  }
+}
+
+.derecha,
+.izquierda,
+.frente,
+.fondo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--boxColor);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.527) inset;
+}
+
+.frente {
+  transform: translateZ(1em);
+}
+
+.derecha {
+  transform: rotateY(90deg) translateZ(1em);
+}
+
+.fondo {
+  transform: rotateY(180deg) translateZ(1em);
+}
+.izquierda {
+  transform: rotateY(270deg) translateZ(1em);
+}
+
+.arriba {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  background: var(--boxColor);
+  transform: translateY(-50%) rotateX(90deg);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.527) inset;
+}
+
+.abajo {
+  position: absolute;
+  width: 2em;
+  height: 2em;
+  background: #0007;
+  bottom: 0;
+  transform: translateY(50%) rotateX(90deg);
+  box-shadow: 0 0 0.5em #000;
+}
+
+.piso {
+  position: absolute;
+  top: 1em;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  width: 4em;
+  height: 4em;
+  background-image: radial-gradient(
+      rgba(70, 66, 66, 0.027),
+      rgba(59, 52, 52, 0.274)
+    ),
+    repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
+  background-size: 50%, 1em 1em;
+}
