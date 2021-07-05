@@ -7,10 +7,10 @@
 }
 
 :root {
-  --boxColor: rgba(66, 219, 194, 0.562);
-  --colorBola: rgba(19, 155, 196, 0.651);
-  --velocidadRotacion: 20s; /* Para dar 1 vuelta */
-  --saltoBola: 0.6s; /* Para dar 1 salto */
+  --boxColor: rgba(141, 241, 74, 0.808);
+  --colorBola: rgb(255, 42, 191);
+  --velocidadRotacion: 10s; /* Para dar 1 vuelta */
+  --saltoBola: 0.7s; /* Para dar 1 salto */
 }
 
 body {
@@ -154,16 +154,16 @@ body {
   box-shadow: 0 0 0.5em #000;
 }
 
-.piso {
+/* .piso {
   position: absolute;
   top: 1em;
   transform: translate(-50%, -50%) rotateX(90deg);
-  width: 4em;
-  height: 4em;
+  width: 6em;
+  height: 6em;
   background-image: radial-gradient(
       rgba(70, 66, 66, 0.027),
       rgba(59, 52, 52, 0.274)
     ),
     repeating-conic-gradient(from 45deg, #111 0deg 90deg, #222 90deg 180deg);
-  background-size: 50%, 1em 1em;
-}
+  background-size: 60%, 1em 1em;
+} */
