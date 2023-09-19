@@ -96,6 +96,7 @@ body {
   bottom: -1em;
   left: -1em;
   animation: alturaCubo var(--saltoBola) infinite linear;
+  transform-style: preserve-3d;
 }
 
 @keyframes alturaCubo {
